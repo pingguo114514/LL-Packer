@@ -31,7 +31,8 @@ jobs:
         cd LeviLamina
         ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
         dir
-        del bedrock_server.exe
+        del bedrock_server.exe.bak
+        del bedrock_server_mod.exe
         del bedrock_server.pdb
         dir
     - name: Install LSE
