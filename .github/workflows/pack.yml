@@ -23,6 +23,7 @@ jobs:
     - name: Install Lip
       run: |
         Invoke-WebRequest -Uri https://github.com/lippkg/lip/releases/download/v0.22.0/lip-windows-amd64.zip -Outfile ./lip.zip
+        del README.MD
         unzip lip.zip
     - name: Install LeviLamina
       run: |
