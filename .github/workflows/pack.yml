@@ -27,7 +27,7 @@ jobs:
     - name: Install LeviLamina
       run: |
         Invoke-WebRequest -Uri https://www.7-zip.org/a/7z2401-x64.exe -Outfile ./7z.exe
-        7z x -oLeviLamina github.zip
+        7z x -oLeviLamina 1.zip
         cd LeviLamina
         ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
         dir
