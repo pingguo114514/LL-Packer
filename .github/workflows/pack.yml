@@ -1,0 +1,57 @@
+name: Pack
+on:
+  workflow_dispatch:
+    inputs:
+      LeviLamina:
+        description: 'LeviLamina version'
+        required: true
+        default: '0.10.2'
+      LSE:
+        description: 'LegacyScriptEngine version'
+        required: true
+        default: '0.5.2'
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    permissions:
+      contents: write
+    runs-on: windows-latest
+    steps: 
+    - name: Check Out
+      uses: actions/checkout@v4
+    - name: Install Lip
+      run: |
+        Invoke-WebRequest -Uri https://github.com/lippkg/lip/releases/download/v0.22.0/lip-windows-amd64.zip -Outfile ./lip.zip
+        unzip lip.zip
+    - name: Install LeviLamina
+      run: |
+        Invoke-WebRequest -Uri https://www.7-zip.org/a/7z2401-x64.exe -Outfile ./7z.exe
+        7z x -oLeviLamina github.zip
+        cd LeviLamina
+        ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
+        dir
+        del bedrock_server.exe
+        del bedrock_server.pdb
+        dir
+    - name: Install LSE
+      run: |
+        cd LeviLamina
+        ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-lua@${{ github.event.inputs.LSE }}
+        ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs@${{ github.event.inputs.LSE }}
+        ../lip install -y github.com/LiteLDev/LegacyScriptEngine@${{ github.event.inputs.LSE }}
+        cd ../
+    - name: Pack files
+      run: |
+        7z a -tzip LeviLamina-${{ github.event.inputs.LeviLamina }}_LSE-${{ github.event.inputs.LSE }}.zip LeviLamina\
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: LeviLamina-${{ github.event.inputs.LeviLamina }}_LSE-${{ github.event.inputs.LSE }}.zip 
+        name: LeviLamina-${{ github.event.inputs.LeviLamina }}&LSE-${{ github.event.inputs.LSE }}
+        tag_name: LeviLamina-${{ github.event.inputs.LeviLamina }}&LSE-${{ github.event.inputs.LSE }}
+        body: |
+          LeviLamina版本: ${{ github.event.inputs.LeviLamina }}
+          LSE版本: ${{ github.event.inputs.LSE }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
