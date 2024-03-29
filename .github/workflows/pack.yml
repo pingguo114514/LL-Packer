@@ -40,6 +40,8 @@ jobs:
         cd LeviLamina
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-lua@${{ github.event.inputs.LSE }}
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs@${{ github.event.inputs.LSE }}
+        ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-nodejs@${{ github.event.inputs.LSE }}
+        ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-python@${{ github.event.inputs.LSE }}
         ../lip install -y github.com/LiteLDev/LegacyScriptEngine@${{ github.event.inputs.LSE }}
         cd ../
     - name: Pack files
