@@ -1,4 +1,4 @@
-name: Pack
+name: Install
 on:
   workflow_dispatch:
     inputs:
