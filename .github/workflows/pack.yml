@@ -20,22 +20,14 @@ jobs:
     steps: 
     - name: Check Out
       uses: actions/checkout@v4
-    - name: Install Lip
-      run: |
-        Invoke-WebRequest -Uri https://github.com/lippkg/lip/releases/download/v0.22.0/lip-windows-amd64.zip -Outfile ./lip.zip
-        del README.MD
-        unzip lip.zip
     - name: Install LeviLamina
       run: |
-        Invoke-WebRequest -Uri https://www.7-zip.org/a/7z2401-x64.exe -Outfile ./7z.exe
         7z x -oLeviLamina 1.zip
         cd LeviLamina
         ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
-        dir
         del bedrock_server.exe.bak
         del bedrock_server_mod.exe
         del bedrock_server.pdb
-        dir
     - name: Install LSE
       run: |
         cd LeviLamina
@@ -48,14 +40,14 @@ jobs:
     - name: Pack files
       run: |
         cd LeviLamina
-        7z a -tzip LeviLamina-${{ github.event.inputs.LeviLamina }}_LSE-${{ github.event.inputs.LSE }}.zip .\
-        copy LeviLamina-${{ github.event.inputs.LeviLamina }}_LSE-${{ github.event.inputs.LSE }}.zip ..\
-        del LeviLamina-${{ github.event.inputs.LeviLamina }}_LSE-${{ github.event.inputs.LSE }}.zip
+        7z a -tzip "LeviLamina-${{ github.event.inputs.LeviLamina }} with LSE-${{ github.event.inputs.LSE }}.zip" .\
+        copy "LeviLamina-${{ github.event.inputs.LeviLamina }} with LSE-${{ github.event.inputs.LSE }}.zip" ..\
+        del "LeviLamina-${{ github.event.inputs.LeviLamina }} with LSE-${{ github.event.inputs.LSE }}.zip"
         cd ..
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
-        files: LeviLamina-${{ github.event.inputs.LeviLamina }}_LSE-${{ github.event.inputs.LSE }}.zip 
+        files: "LeviLamina-${{ github.event.inputs.LeviLamina }} with LSE-${{ github.event.inputs.LSE }}.zip" 
         name: LeviLamina-${{ github.event.inputs.LeviLamina }}&LSE-${{ github.event.inputs.LSE }}
         tag_name: LeviLamina-${{ github.event.inputs.LeviLamina }}&LSE-${{ github.event.inputs.LSE }}
         body: |
