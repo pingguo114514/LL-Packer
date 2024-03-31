@@ -31,6 +31,9 @@ jobs:
     - name: Install LSE
       run: |
         cd LeviLamina
+        ../lip install -y github.com/LiteLDev/LegacyMoney
+        ../lip install -y github.com/LiteLDev/LegacyParticleAPI
+        ../lip install -y github.com/LiteLDev/LegacyRemoteCall
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-lua@${{ github.event.inputs.LSE }}
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs@${{ github.event.inputs.LSE }}
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-nodejs@${{ github.event.inputs.LSE }}
