@@ -48,7 +48,7 @@ jobs:
       with:
         files: "LeviLamina-${{ github.event.inputs.LeviLamina }}-with-LSE-${{ github.event.inputs.LSE }}.zip" 
         name: LeviLamina-${{ github.event.inputs.LeviLamina }}&LSE-${{ github.event.inputs.LSE }}
-        tag_name: LeviLamina-${{ github.event.inputs.LeviLamina }}&LSE-${{ github.event.inputs.LSE }}
+        tag_name: LeviLamina&LSE
         body: |
           LeviLamina版本: ${{ github.event.inputs.LeviLamina }}
           LSE版本: ${{ github.event.inputs.LSE }}

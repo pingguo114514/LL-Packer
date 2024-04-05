@@ -20,8 +20,20 @@ jobs:
         mkdir bds
         cd bds
         ../lip.exe install -y github.com/LiteLDev/bds@${{ github.event.inputs.BDS }}
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
+        cd ../
+    - name: Pack files
+      run: |
+        cd BDS
+        7z a -tzip "BDS-${{ github.event.inputs.BDS }}.zip" .\
+        copy "BDS-${{ github.event.inputs.BDS }}.zip" ..\
+        cd ..
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
       with:
+        files: "BDS-${{ github.event.inputs.BDS }}.zip" 
         name: BDS-${{ github.event.inputs.BDS }}
-        path: BDS
+        tag_name: BDS
+        body: |
+          BDS版本: ${{ github.event.inputs.BDS }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
