@@ -1,0 +1,27 @@
+name: Install BDS
+on:
+  workflow_dispatch:
+    inputs:
+      BDS:
+        description: 'BDS version'
+        required: true
+        default: '1.20.73'
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    permissions:
+      contents: write
+    runs-on: windows-latest
+    steps: 
+    - name: Check Out
+      uses: actions/checkout@v4
+    - name: Install BDS
+      run: |
+        mkdir bds
+        cd bds
+        ../lip.exe install -y github.com/LiteLDev/bds@${{ github.event.inputs.BDS }}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: BDS-${{ github.event.inputs.BDS }}
+        path: BDS
