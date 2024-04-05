@@ -2,6 +2,10 @@ name: Install LeviLamina&LegacyScriptEngine
 on:
   workflow_dispatch:
     inputs:
+      BDS:
+        description: 'BDS version'
+        required: true
+        default: '1.20.73'
       LeviLamina:
         description: 'LeviLamina version'
         required: true
@@ -20,9 +24,18 @@ jobs:
     steps: 
     - name: Check Out
       uses: actions/checkout@v4
+    - name: Install BDS
+      run: |
+        mkdir bds
+        cd bds
+        ../lip.exe install -y github.com/LiteLDev/bds@${{ github.event.inputs.BDS }}
+        cd ../
     - name: Install LeviLamina
       run: |
-        7z x -oLeviLamina 1.zip
+        mkdir LeviLamina
+        copy .\BDS\bedrock_server.exe .\LeviLamina
+        copy .\BDS\bedrock_server.pdb .\LeviLamina
+        xcopy /s /e /i .\BDS\.lip .\LeviLamina\.lip
         cd LeviLamina
         ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
         del bedrock_server.exe.bak
