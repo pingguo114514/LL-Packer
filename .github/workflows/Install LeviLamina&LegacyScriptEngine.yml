@@ -5,15 +5,15 @@ on:
       BDS:
         description: 'BDS version'
         required: true
-        default: '1.20.73'
+        default: '1.20.72'
       LeviLamina:
         description: 'LeviLamina version'
         required: true
-        default: '0.10.2'
+        default: '0.10.5'
       LSE:
         description: 'LegacyScriptEngine version'
         required: true
-        default: '0.5.2'
+        default: '0.5.3'
 
 jobs:
   build:
@@ -53,13 +53,13 @@ jobs:
     - name: Pack files
       run: |
         cd LeviLamina
-        7z a -tzip "LeviLamina-${{ github.event.inputs.LeviLamina }}-with-LSE-${{ github.event.inputs.LSE }}.zip" .\
-        copy "LeviLamina-${{ github.event.inputs.LeviLamina }}-with-LSE-${{ github.event.inputs.LSE }}.zip" ..\
+        7z a -tzip "LeviLamina-${{ github.event.inputs.LeviLamina }} with LSE-${{ github.event.inputs.LSE }}.zip" .\
+        copy "LeviLamina-${{ github.event.inputs.LeviLamina }} with LSE-${{ github.event.inputs.LSE }}.zip" ..\
         cd ..
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
-        files: "LeviLamina-${{ github.event.inputs.LeviLamina }}-with-LSE-${{ github.event.inputs.LSE }}.zip" 
+        files: "LeviLamina-${{ github.event.inputs.LeviLamina }} with LSE-${{ github.event.inputs.LSE }}.zip" 
         name: LeviLamina-${{ github.event.inputs.LeviLamina }}&LSE-${{ github.event.inputs.LSE }}
         tag_name: LeviLamina&LSE
         body: |
