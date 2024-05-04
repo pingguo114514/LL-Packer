@@ -25,6 +25,7 @@ jobs:
         mkdir bds
         cd bds
         ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
+        rename bedrock_server.exe.bak bedrock_server.exe
         cd ../
     - name: Install LeviLamina
       run: |

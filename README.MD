@@ -24,13 +24,12 @@
 
 前往[Github Release](https://github.com/pingguo114514/LL-Installer/releases)或[MineBBS](https://www.minebbs.com/resources/levilamina-legacyscriptengine.7230/)下载
 
-## `Run workflow` 页中选项解释
+## Run workflow页中选项解释
 
 | 名称                          | 解释                  |
 | ---------------------------- | ---------------------|
 | `LeviLamina version`         | 安装的`LeviLamina`版本 |
 | `LegacyScriptEngine version` | 安装的`LSE`版本        |
--------------------------------------------------------
 
 ## 原理
 
