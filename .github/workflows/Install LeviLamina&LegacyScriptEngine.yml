@@ -35,7 +35,7 @@ jobs:
         mkdir .lip
         cd .lip
         mkdir metadata
-        copy ..\..\BDS\.lip\metadata\github.com%2FLiteLDev%2Fbds.json .\metadata\github.com%2FLiteLDev%2Fbds.json
+        copy ..\..\BDS\.lip\metadata\github.com%2FLiteLDev%2Fbds.json .\metadata
         cd ..
         ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
         del bedrock_server.exe.bak
