@@ -43,4 +43,4 @@
 
 ## Star History
 
-[Star History Chart](https://api.star-history.com/svg?repos=pingguo114514/LL-Installer&type=Date)
+![Star History](https://api.star-history.com/svg?repos=pingguo114514/LL-Installer&type=Date)
