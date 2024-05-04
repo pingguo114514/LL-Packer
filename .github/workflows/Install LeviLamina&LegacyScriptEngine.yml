@@ -30,7 +30,7 @@ jobs:
     - name: Install LeviLamina
       run: |
         mkdir LeviLamina
-        copy .\BDS\bedrock_server.exe.bak .\LeviLamina\bedrock_server.exe
+        copy .\BDS\bedrock_server.exe .\LeviLamina\bedrock_server.exe
         copy .\BDS\bedrock_server.pdb .\LeviLamina
         xcopy /s /e /i .\BDS\.lip .\LeviLamina\.lip
         cd LeviLamina
