@@ -2,7 +2,7 @@
 
 基于[LLBDS Packer](https://github.com/FTS427/llbds_packer)二次开发而成
 
-一个使用Lip打包任意版本的 LeviLamina 和 LegacyScriptEngine 的 Github Action
+一个使用Lip打包任意版本的 LeviLamina 和 LegacyScriptEngine **(不附带BDS)**的 Github Action
 
 ## 食用方法
 
