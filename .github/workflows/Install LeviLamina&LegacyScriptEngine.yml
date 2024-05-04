@@ -2,18 +2,14 @@ name: Install LeviLamina&LegacyScriptEngine
 on:
   workflow_dispatch:
     inputs:
-      BDS:
-        description: 'BDS version'
-        required: true
-        default: '1.20.72'
       LeviLamina:
         description: 'LeviLamina version'
         required: true
-        default: '0.10.5'
+        default: '0.12.3'
       LSE:
         description: 'LegacyScriptEngine version'
         required: true
-        default: '0.5.3'
+        default: '0.7.8'
 
 jobs:
   build:
@@ -28,7 +24,7 @@ jobs:
       run: |
         mkdir bds
         cd bds
-        ../lip.exe install -y github.com/LiteLDev/bds@${{ github.event.inputs.BDS }}
+        ../lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
         cd ../
     - name: Install LeviLamina
       run: |
@@ -43,7 +39,6 @@ jobs:
         del bedrock_server.pdb
     - name: Install LSE
       run: |
-        cd LeviLamina
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-lua@${{ github.event.inputs.LSE }}
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs@${{ github.event.inputs.LSE }}
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-nodejs@${{ github.event.inputs.LSE }}
