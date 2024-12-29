@@ -41,6 +41,6 @@
 
 欢迎 PR。
 
-## Star History
+## 鸣谢
 
-![Star History](https://api.star-history.com/svg?repos=pingguo114514/LL-Installer&type=Date)
++ [ZH-Server/ll_easier](https://github.com/ZH-Server/ll_easier)
