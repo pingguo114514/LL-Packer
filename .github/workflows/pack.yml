@@ -9,7 +9,7 @@ on:
       LSE:
         description: 'LegacyScriptEngine version'
         required: true
-        default: '0.7.8'
+        default: '0.8.20'
 
 jobs:
   build:
@@ -22,11 +22,12 @@ jobs:
       uses: actions/checkout@v4
     - name: Download Lip
       run: |
-        wget -Uri https://github.com/futrime/lip/releases/download/v0.24.0/lip-windows-arm64.zip -OutFile ./lip.zip
+        Invoke-WebRequest -Uri https://github.com/futrime/lip/releases/download/v0.24.0/lip-windows-amd64.zip -OutFile ./lip.zip
         Expand-Archive -Path .\lip.zip -DestinationPath .\lip
         mv -Path .\lip\lip.exe -Destination .\lip.exe
         del lip.zip
         del -Path .\lip -Recurse
+        mkdir LeviLamina
 
     - name: Download LeviLamina & Delete BDS
       working-directory: LeviLamina
