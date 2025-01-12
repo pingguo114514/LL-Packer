@@ -45,9 +45,11 @@ jobs:
       working-directory: LeviLamina
       id: get_bds_core_version
       run: |
-        ../lip install -y github.com/LiteLDev/LegacyScriptEngine@${{ github.event.inputs.LSE }}
+        ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-lua@${{ github.event.inputs.LSE }}
+        ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs@${{ github.event.inputs.LSE }}
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-nodejs@${{ github.event.inputs.LSE }}
         ../lip install -y gitea.litebds.com/LiteLDev/legacy-script-engine-python@${{ github.event.inputs.LSE }}
+        ../lip install -y github.com/LiteLDev/LegacyScriptEngine@${{ github.event.inputs.LSE }}
         $res = Get-content  -Raw -Path "./.lip/metadata/github.com%2FLiteLDev%2Fbds.json" |ConvertFrom-Json
         "bds_core_version=$($res.version)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     - name: Pack files
