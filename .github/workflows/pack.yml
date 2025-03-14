@@ -32,7 +32,7 @@ jobs:
         copy .\tooth_lock.json .\tooth_lock.json.bak
         ..\lip.exe uninstall github.com/LiteLDev/bds
         del .\tooth_lock.json
-        rename .\tooth_lock.json.bak tooth_lock.json
+        Rename-Item .\tooth_lock.json.bak tooth_lock.json
         del allowlist.json
         del bedrock_server_mod.exe
         del permissions.json
@@ -47,7 +47,7 @@ jobs:
         ..\lip install github.com/LiteLDev/LegacyScriptEngine#nodejs@${{ github.event.inputs.LSE }}
         ..\lip install github.com/LiteLDev/LegacyScriptEngine#python@${{ github.event.inputs.LSE }}
         $res = Get-content  -Raw -Path ".\tooth_lock.json" |ConvertFrom-Json
-        "bds_core_version=$($res[1].manifest.version])" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "bds_core_version=$($res.packages[1].manifest.version)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     - name: Pack files
       working-directory: LeviLamina
       run: |
