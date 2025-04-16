@@ -29,6 +29,9 @@ jobs:
       working-directory: LeviLamina
       run: |
         ..\lip.exe install github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LeviLamina }}
+        Add-Content PeEditor.bat "@echo off"
+        Add-Content PeEditor.bat ".\PeEditor.exe -m"
+        Add-Content PeEditor.bat "pause"
         copy .\tooth_lock.json .\tooth_lock.json.bak
         ..\lip.exe uninstall github.com/LiteLDev/bds
         del .\tooth_lock.json
