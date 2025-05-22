@@ -40,6 +40,7 @@ jobs:
         del bedrock_server_mod.exe
         del permissions.json
         del server.properties
+        del profanity_filter.wlist
         del -Path .\.cache -Recurse
     - name: Download LSE & Get BDS Version
       working-directory: LeviLamina
