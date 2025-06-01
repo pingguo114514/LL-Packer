@@ -20,7 +20,7 @@ jobs:
     steps: 
     - name: Download Lip
       run: |
-        Invoke-WebRequest -Uri https://github.com/futrime/lip/releases/download/v0.28.3/lip-cli-win-x64.zip -OutFile ./lip.zip
+        Invoke-WebRequest -Uri https://github.com/futrime/lip/releases/download/v0.31.0/lip-cli-win-x64.zip -OutFile ./lip.zip
         Expand-Archive -Path .\lip.zip -DestinationPath .\
         del lip.zip
         mkdir LeviLamina
